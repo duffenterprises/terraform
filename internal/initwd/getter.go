@@ -119,6 +119,9 @@ func (g reusingGetter) getWithGoGetter(instPath, addr string) (string, error) {
 		}
 	} else {
 		log.Printf("[TRACE] fetching %q to %q", realAddr, instPath)
+		log.Printf("[TRACE] realAddr %q", realAddr)
+		realAddr = strings.Replace(realAddr, "+", "%2B", -1)
+
 		client := getter.Client{
 			Src: realAddr,
 			Dst: instPath,
